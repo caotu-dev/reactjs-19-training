@@ -1,6 +1,6 @@
 import UseTransitionScreen from "@/screens/actions/UseTransitionScreen";
 
-export default function Home() {
+export default function Page() {
   return (
     <UseTransitionScreen />
   );
