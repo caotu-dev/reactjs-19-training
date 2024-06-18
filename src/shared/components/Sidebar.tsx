@@ -4,6 +4,8 @@ export default function Sidebar() {
     { id: 2, url: "/use-action-state", title: "useActionState" },
     { id: 3, url: "/use-form-status", title: "useFormStatus" },
     { id: 4, url: "/use-optimistic", title: "useOptimistic" },
+    { id: 5, url: "/use-api", title: "use (promises/context)" },
+    { id: 6, url: "/use-deferred-value", title: "useDeferredValue" },
   ];
 
   return (
