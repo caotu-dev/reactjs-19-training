@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col items-center justify-between">
           <Sidebar />
-          <div className="p-4 sm:ml-64">{children}</div>
+          <div className="min-h-screen sm:pl-64 w-full">{children}</div>
         </main>
       </body>
     </html>
