@@ -39,12 +39,12 @@ export default function Sidebar() {
             className="flex items-center ps-2.5 mb-5"
           >
             <img
-              src="https://w7.pngwing.com/pngs/452/495/png-transparent-react-javascript-angularjs-ionic-github-text-logo-symmetry-thumbnail.png"
+              src="https://4.bp.blogspot.com/-s-W7RvtZhXQ/WagFWQE1pzI/AAAAAAABUTA/vbZgoWdAZ9oK7DBuZdhrbduF-z3sZFfSACLcBGAs/s1600/2-4.JPG"
               className="h-6 me-3 sm:h-7"
               alt="Flowbite Logo"
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              ReactJS v.19
+              Euro 2024
             </span>
           </a>
           <hr />

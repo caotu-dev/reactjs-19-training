@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface TEuroPlayer {
     player: string;
     status: string;
@@ -63,7 +65,8 @@ export interface TEuroMatchTab {
     id: number,
     selector: string,
     title: string,
-    data: TEuroMatch[],
+    data?: TEuroMatch[],
+    children?: React.ReactNode,
     isActive: boolean,
 }
 

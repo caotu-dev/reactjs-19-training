@@ -1,9 +1,11 @@
-import Image from "next/image";
 import { TEuroMatch } from "../types/match.types";
+import Link from "next/link";
+import CountryFlag from "@/shared/components/CountryFlag";
 
 export default function MatchItem({ match }: { match: TEuroMatch }) {
   return (
-    <div
+    <Link
+      href={`/matches/${match?._id}`}
       className="flex items-center justify-between p-4
         rounded-lg bg-gray-50 dark:bg-gray-800 text-sm text-gray-500
         dark:text-gray-400 w-[450px] gap-2 relative"
@@ -22,8 +24,8 @@ export default function MatchItem({ match }: { match: TEuroMatch }) {
         />
       </div>
       <MatchDateItem match={match} />
-      <p className="text-green-500 absolute right-2 top-2">live {match?.minutesCompleted}"</p>
-    </div>
+      {/* <p className="text-green-500 absolute right-2 top-2">live {match?.minutesCompleted}"</p> */}
+    </Link>
   );
 }
 
@@ -39,7 +41,7 @@ function MatchTeamItem({
   return (
     <div className="flex items-center justify-between w-full">
       <div className="flex items-center justify-start gap-2">
-        {imageUrl && <Image src={imageUrl} alt={name} width={30} height={20} />}
+        {imageUrl && <CountryFlag country={name} width={30} height={20} />}
         <span className="capitalize">{name}</span>
       </div>
       <span className="text-lg">{score}</span>
@@ -50,7 +52,6 @@ function MatchTeamItem({
 function MatchDateItem({ match }: { match: TEuroMatch }) {
   return (
     <div className="flex flex-col gap-1 items-center w-1/4">
-      
       {match?.relativeDate === "Today" && <p className="today-match"></p>}
       {match?.isFinished ? (
         <>

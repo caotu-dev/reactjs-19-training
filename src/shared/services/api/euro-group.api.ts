@@ -1,6 +1,6 @@
 import { sortArrayByKey, sortByMultipleKeys } from "@/shared/utils/common.utils";
 
-const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/euro-2024/groups`;
+const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}api/euro-2024/groups`;
 
 export const EuroGroupApi = {
     listGroups: async () => {

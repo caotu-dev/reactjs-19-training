@@ -1,32 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
-import { TEuroMatchTab } from "../types/match.types";
-import MatchItem from "./MatchItem";
+import { TEuroMatchTab } from "../../types/match.types";
+import MatchItem from "../MatchItem";
 import React from "react";
 
-export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
+export default function MatchDetailTab({ tabs }: { tabs: TEuroMatchTab[] }) {
   const defaultTab = 1;
   const [activeTab, setActiveTab] = useState<number>(defaultTab);
 
-  useEffect(() => {
-    const scrollToTodayMatches = () => {
-      if (activeTab === 1) {
-        setTimeout(() => {
-          const el = document?.getElementsByClassName("today-match");
-          if (el?.length > 0) {
-            const scrollEl = el[0];
-            scrollEl.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 300);
-      }
-    };
-
-    scrollToTodayMatches();
-  }, [activeTab]);
-
   return (
     <>
-      <div className="mb-4 border-b border-gray-200 dark:border-gray-700 fixed top-0 z-10 w-full bg-gray-50 dark:bg-gray-800">
+      <div className="mb-4 border-b border-gray-200 dark:border-gray-700 w-full bg-gray-50 dark:bg-gray-800">
         <ul
           className="flex flex-wrap -mb-px text-sm font-medium text-center"
           id="default-tab"
@@ -53,7 +37,7 @@ export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
           ))}
         </ul>
       </div>
-      <div className="pt-12" id="default-tab-content">
+      <div id="default-tab-content">
         {tabs?.map((tab) => (
           <div
             key={tab?.id}
@@ -64,11 +48,7 @@ export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
             role="tabpanel"
             aria-labelledby={`${tab?.selector}-tab`}
           >
-            {tab?.data?.map((match) => (
-              <React.Fragment key={match?._id}>
-                <MatchItem match={match} />
-              </React.Fragment>
-            ))}
+            {tab?.children}
           </div>
         ))}
       </div>

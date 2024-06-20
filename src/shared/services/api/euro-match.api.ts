@@ -1,7 +1,6 @@
-import { TEuroMatch } from "@/modules/euro-2024/matches/types/match.types";
 import { formatIsoToHourMinutes, getRelativeDate, sortArrayByKey } from "@/shared/utils/common.utils";
 
-const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/euro-2024/matches`;
+const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}api/euro-2024/matches`;
 
 export const EuroMatchApi = {
     getMatches: async () => {
@@ -22,7 +21,7 @@ export const EuroMatchApi = {
         }
     },
 
-    getGroupById: async (id: string) => {
+    getMatchById: async (id: string) => {
         const apiRequest: any = await fetch(`${baseUrl}/${id}`);
         const response = await apiRequest.json();
         return response;

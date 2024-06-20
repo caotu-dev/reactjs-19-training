@@ -9,18 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "14.3.0-canary.46",
+    "openai": "^4.52.0",
     "react": "19.0.0-beta-4508873393-20240430",
     "react-dom": "19.0.0-beta-4508873393-20240430",
-    "next": "14.3.0-canary.46"
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.3.0-canary.46",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.3.0-canary.46"
+    "typescript": "^5"
   }
 }

@@ -97,3 +97,13 @@ export function formatIsoToHourMinutes(isoString: string) {
     // Return the formatted time string
     return `${hours}:${minutes}`;
 }
+
+// String
+export function capitalizeFirstLetter(string: string) {
+    if (!string) return string; // Handle empty strings
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function capitalizeEachWord(string: string) {
+    return string.split(' ').map(word => capitalizeFirstLetter(word)).join(' ');
+}

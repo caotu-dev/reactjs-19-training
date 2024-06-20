@@ -1,4 +1,5 @@
 import { euroGetRequestHeaders } from "@/core/constants/euro-api-config";
+import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
     const response = await fetch(`${process.env.EURO_API_URL}/groups`, {
@@ -6,5 +7,5 @@ export async function GET(request: Request) {
         headers: euroGetRequestHeaders
     });
     const data = await response.json()
-    return Response.json({ status: response.status, data })
+    return NextResponse.json({ status: response.status, data })
 }

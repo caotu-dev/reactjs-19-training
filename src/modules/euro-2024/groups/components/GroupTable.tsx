@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { TEuroGroup } from "../types/group.types";
+import CountryFlag from "@/shared/components/CountryFlag";
 
 interface Props {
   group: TEuroGroup;
@@ -41,16 +42,15 @@ export default function GroupTable({ group }: Props) {
           </tr>
         </thead>
         <tbody>
-          {group?.teams.map((team) => (
-            <tr className="bg-gray-500 border-b border-gray-400">
+          {group?.teams.map((team, index) => (
+            <tr key={index} className="bg-gray-500 border-b border-gray-400">
               <th
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-50 whitespace-nowrap dark:text-gray-100"
               >
                 <div className="flex items-center justify-start gap-4">
-                  <Image
-                    src={team?.team?.imageUrl}
-                    alt={team?.team?.name}
+                  <CountryFlag
+                    country={team?.team?.name}
                     width={30}
                     height={20}
                   />
