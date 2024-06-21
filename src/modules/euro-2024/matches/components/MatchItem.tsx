@@ -8,7 +8,7 @@ export default function MatchItem({ match }: { match: TEuroMatch }) {
       href={`/matches/${match?._id}`}
       className="flex items-center justify-between p-4
         rounded-lg bg-gray-50 dark:bg-gray-800 text-sm text-gray-500
-        dark:text-gray-400 w-[450px] gap-2 relative"
+        dark:text-gray-400 w-full md:w-[49%] gap-2 relative"
     >
       <div className="w-3/4 border-r-2 pr-4">
         <MatchTeamItem
@@ -51,19 +51,21 @@ function MatchTeamItem({
 
 function MatchDateItem({ match }: { match: TEuroMatch }) {
   return (
-    <div className="flex flex-col gap-1 items-center w-1/4">
+    <>
+      <div className="flex flex-col gap-1 items-center w-1/4">
+        {match?.isFinished ? (
+          <>
+            <p>Fulltime</p>
+            <p>{match?.relativeDate}</p>
+          </>
+        ) : (
+          <>
+            <p>{match?.relativeDate}</p>
+            <p>{match?.time}</p>
+          </>
+        )}
+      </div>
       {match?.relativeDate === "Today" && <p className="today-match"></p>}
-      {match?.isFinished ? (
-        <>
-          <p>Fulltime</p>
-          <p>{match?.relativeDate}</p>
-        </>
-      ) : (
-        <>
-          <p>{match?.relativeDate}</p>
-          <p>{match?.time}</p>
-        </>
-      )}
-    </div>
+    </>
   );
 }

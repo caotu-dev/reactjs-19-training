@@ -1,6 +1,7 @@
-import { euroGetRequestHeaders } from "@/core/constants/euro-api-config";
 import { NextResponse } from 'next/server';
 import { getMatchById, getTeamById } from "./service";
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   const matchId = params?.id;

@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { TEuroMatchTab } from "../types/match.types";
 import MatchItem from "./MatchItem";
-import React from "react";
 
 export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
   const defaultTab = 1;
@@ -26,7 +25,7 @@ export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
 
   return (
     <>
-      <div className="mb-4 border-b border-gray-200 dark:border-gray-700 fixed top-0 z-10 w-full bg-gray-50 dark:bg-gray-800">
+      <div className="mb-4 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10 w-full bg-gray-50 dark:bg-gray-800">
         <ul
           className="flex flex-wrap -mb-px text-sm font-medium text-center"
           id="default-tab"
@@ -53,7 +52,7 @@ export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
           ))}
         </ul>
       </div>
-      <div className="pt-12" id="default-tab-content">
+      <div className="pt-1 max-h-[500px] overflow-y-auto" id="default-tab-content">
         {tabs?.map((tab) => (
           <div
             key={tab?.id}
@@ -65,9 +64,9 @@ export default function MatchTab({ tabs }: { tabs: TEuroMatchTab[] }) {
             aria-labelledby={`${tab?.selector}-tab`}
           >
             {tab?.data?.map((match) => (
-              <React.Fragment key={match?._id}>
+              <Fragment key={match?._id}>
                 <MatchItem match={match} />
-              </React.Fragment>
+              </Fragment>
             ))}
           </div>
         ))}

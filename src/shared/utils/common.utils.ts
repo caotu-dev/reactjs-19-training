@@ -22,7 +22,7 @@ async function getData(url: string) {
 
 // Sort
 export function sortArrayByKey(array: any[], key: string, order: 'asc' | 'desc' = 'asc') {
-    return array.sort((a, b) => {
+    return array?.sort((a, b) => {
         if (order === 'asc') {
             if (typeof a[key] === 'string') {
                 return a[key].localeCompare(b[key]);
@@ -38,7 +38,7 @@ export function sortArrayByKey(array: any[], key: string, order: 'asc' | 'desc' 
 }
 
 export function sortByMultipleKeys(array: any[], keys: { name: string, direction: 'asc' | 'desc' }[]) {
-    return array.sort((a, b) => {
+    return array?.sort((a, b) => {
         for (let key of keys) {
             const direction = key.direction === 'desc' ? -1 : 1;
             if (a[key.name] < b[key.name]) return -1 * direction;
@@ -46,6 +46,21 @@ export function sortByMultipleKeys(array: any[], keys: { name: string, direction
         }
         return 0;
     });
+}
+
+export function groupArrayBy(array: any[], key: string) {
+    if(!array?.length) return [];
+    return array.reduce((result, item) => {
+        // Get the key value
+        const keyValue = item[key];
+        // If the key doesn't exist in the result, create an array for it
+        if (!result[keyValue]) {
+            result[keyValue] = [];
+        }
+        // Push the item into the array for this key
+        result[keyValue].push(item);
+        return result;
+    }, {});
 }
 
 // Date time
@@ -105,5 +120,6 @@ export function capitalizeFirstLetter(string: string) {
 }
 
 export function capitalizeEachWord(string: string) {
+    if (!string) return string; // Handle empty strings
     return string.split(' ').map(word => capitalizeFirstLetter(word)).join(' ');
 }

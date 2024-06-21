@@ -57,13 +57,15 @@ export default function MatchDetailPage({ id }: { id: string }) {
   ];
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col">
       {isLoading ? (
         <Loading />
       ) : (
         <>
           <MatchGeneralInfo matchDetails={matchDetails} />
-          <MatchDetailTab tabs={tabs} />
+          <div className="md:md:px-32 pt-4">
+            <MatchDetailTab tabs={tabs} />
+          </div>
         </>
       )}
     </div>

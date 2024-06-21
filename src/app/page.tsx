@@ -1,7 +1,10 @@
-import UseTransitionScreen from "@/modules/react-docs/screens/actions/UseTransitionScreen";
+import QueryProviders from "./providers";
+import MatchPage from "@/modules/euro-2024/matches/pages/MatchPage";
 
 export default function Home() {
   return (
-    <UseTransitionScreen />
+    <QueryProviders>
+      <MatchPage />
+    </QueryProviders>
   );
 }

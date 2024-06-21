@@ -1,10 +1,16 @@
-import { sortByMultipleKeys } from "@/shared/utils/common.utils";
 import MatchTab from "../components/MatchTab";
-import { TEuroMatch, TEuroMatchDTO, TEuroMatchTab } from "../types/match.types";
+import { TEuroMatchDTO, TEuroMatchTab } from "../types/match.types";
 import { EuroMatchApi } from "@/shared/services/api/euro-match.api";
+import IncomingMatch from "../components/IncomingMatch";
 
 export default async function MatchPage() {
   const response: TEuroMatchDTO = await EuroMatchApi.getMatches();
+
+  const incomingMatches = response?.data?.filter(
+    (match) =>
+      (match?.relativeDate === "Today" || match?.relativeDate === "Tomorrow") &&
+      match?.isFinished === false
+  );
   const groupStage = response?.data?.filter((_) => _?.stage === "groupStage");
   const roundOfSixteen = response?.data?.filter(
     (_) => _?.stage === "roundOfSixteen"
@@ -54,8 +60,11 @@ export default async function MatchPage() {
   ];
 
   return (
-    <div className="flex flex-col p-4">
-      <MatchTab tabs={tabs} />
+    <div className="flex flex-col">
+      <IncomingMatch matches={incomingMatches} />
+      <div className="p-4 md:md:px-32">
+        <MatchTab tabs={tabs} />
+      </div>
     </div>
   );
 }
