@@ -2,9 +2,11 @@ import MatchTab from "../components/MatchTab";
 import { TEuroMatchDTO, TEuroMatchTab } from "../types/match.types";
 import { EuroMatchApi } from "@/shared/services/api/euro-match.api";
 import IncomingMatch from "../components/IncomingMatch";
+import ErrorPage from "@/modules/static/ErrorPage";
 
 export default async function MatchPage() {
   const response: TEuroMatchDTO = await EuroMatchApi.getMatches();
+  if(!response) return <ErrorPage />;
 
   const incomingMatches = response?.data?.filter(
     (match) =>

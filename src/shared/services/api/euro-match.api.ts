@@ -1,11 +1,11 @@
 import { formatIsoToHourMinutes, getRelativeDate, sortArrayByKey } from "@/shared/utils/common.utils";
-
-const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}api/euro-2024/matches`;
-
+import { BaseApi } from "./base.api";
+const baseUrl = `/euro-2024/matches`;
 export const EuroMatchApi = {
     getMatches: async () => {
-        const apiRequest: any = await fetch(`${baseUrl}`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}`);
+        if(!response?.data) return false;
+
         const sortedMatches = sortArrayByKey([...response?.data], 'date')
         return {
             ...response,
@@ -22,8 +22,7 @@ export const EuroMatchApi = {
     },
 
     getMatchById: async (id: string) => {
-        const apiRequest: any = await fetch(`${baseUrl}/${id}`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/${id}`);
         return response;
     },
 }

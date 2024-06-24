@@ -1,11 +1,12 @@
 import { sortArrayByKey, sortByMultipleKeys } from "@/shared/utils/common.utils";
-
-const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}api/euro-2024/groups`;
+import { BaseApi } from "./base.api";
+const baseUrl = `/euro-2024/groups`;
 
 export const EuroGroupApi = {
     listGroups: async () => {
-        const apiRequest: any = await fetch(`${baseUrl}`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}`);
+        if(!response?.data) return false;
+
         const sortedGroups = sortArrayByKey([...response?.data], 'name')
         return {
             ...response,
@@ -24,20 +25,17 @@ export const EuroGroupApi = {
     },
 
     getGroupById: async (id: string) => {
-        const apiRequest: any = await fetch(`${baseUrl}/${id}`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/${id}`);
         return response;
     },
 
     getGroupTeamsById: async (id: string) => {
-        const apiRequest: any = await fetch(`${baseUrl}/${id}/teams`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/${id}/teams`);
         return response;
     },
 
     getGroupMatchesById: async (id: string) => {
-        const apiRequest: any = await fetch(`${baseUrl}/${id}/matches`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/${id}/matches`);
         return response;
     },
 }

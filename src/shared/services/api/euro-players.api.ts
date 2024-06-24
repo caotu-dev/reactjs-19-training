@@ -1,27 +1,25 @@
-const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}api/euro-2024/players`;
+import { BaseApi } from "./base.api";
+
+const baseUrl = `/euro-2024/players`;
 
 export const EuroPlayerApi = {
     getPlayers: async () => {
-        const apiRequest: any = await fetch(`${baseUrl}`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(baseUrl)
         return response;
     },
 
     getTopAssisters: async () => {
-        const apiRequest: any = await fetch(`${baseUrl}/top-assisters`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/top-assisters`);
         return response;
     },
 
     getTopScores: async () => {
-        const apiRequest: any = await fetch(`${baseUrl}/top-scores`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/top-scores`);
         return response;
     },
 
     getPlayerById: async (id: string) => {
-        const apiRequest: any = await fetch(`${baseUrl}/${id}`);
-        const response = await apiRequest.json();
+        const response: any = await BaseApi.getData(`${baseUrl}/${id}`);
         return response;
     },
 }

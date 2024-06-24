@@ -1,13 +1,10 @@
-const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL}api/euro-2024/teams`;
+import { BaseApi } from "./base.api";
+
+const baseUrl = `/euro-2024/teams`;
 
 export const EuroTeamApi = {
     getTeams: async () => {
-        try {
-            const apiRequest: any = await fetch(`${baseUrl}`);
-            const response = await apiRequest.json();
-            return response;
-        } catch (err) {
-            console.log(err)
-        }
+        const response: any = await BaseApi.getData(`${baseUrl}`);
+        return response;
     },
 }
